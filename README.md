@@ -1,21 +1,38 @@
-# ScammerUniversityFinals
+# "The Politics, Ethics, Personality, and Risk Aversion of the AI Oracle" #
 
-### Suggestion: Relationship between climate and personal income by states
+## __I. Data__
 
-1. Collect state-level climate data using NOAA's Climate Data Online (CDO) API
- - retrieve extreme  weather indicators (e.g., average temperature, precipitation, frequency of extreme events) aggregated at the state level.
+### <ins> _1. Data Collection Method_ <ins>
+In this project, we used 
 
-2. Collect state-level personal income data using the Bureau of Economic Analysis (BEA) API
- - obtain annual measures such as total personal income and per capita personal income for each U.S. state.
- - align the time frame with the climate data for consistent panel analysis.
+### <ins> _2. Limitation of Data_ <ins>
+The data compiled suffered from some notable limitations:  
 
-3. Analyze the relationship between state-level climate variables and personal income
-conduct correlation analysis as a baseline.
- - extend to econometric methods (e.g. event-study models to capture causal impacts of extreme weather shocks on income growth) if possible.
- - discuss limitation (aggregation bias, omitted variables) and potential extensions (employment data).
+### <ins> _3. Potential Extension of Data_ <ins>
 
-4. Visualize findings on a U.S. map or through an interactive dashboard
- - create geographic heatmaps to show variation across states.
- - build an interactive dashboard to allow dynamic exploration of climate-income relationships if possible
+## __II. Methodology for Analysis__
 
-This is just an example, so any other topic would be fine. (You can delete this.)
+## __III. Descriptive Analysis & Findings__
+
+### <ins> _1. :_ <ins>
+
+### <ins> _2. :_ <ins>
+
+## __IV. Summary & Conclusion__
+
+## __V. Limitations & Extensions__
+
+### <ins> _1. Limitation of Our Analysis_ <ins>
+
+### <ins> _2. Possible Extension of Analysis_ <ins>
+
+Further research could be done regarding (but not limited to) the following areas:  
+
+## __VI. Instruction to Rerun__ 
+
+### <ins> _1. Requirements_ <ins>
+Your code will be executed in a Python environment contatining the standard library and the packages specified in `requirements.txt`. Install them with `pip install -r requirements.txt`.
+
+### <ins> _2. Data Scraping and Cleaning_ <ins>
+
+### <ins> _3. Analysis_ <ins>
