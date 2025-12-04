@@ -711,15 +711,15 @@ if __name__ == "__main__":
     print("\n=== Final Results ===")
     print(final_result)
 
-    # 4. Save to CSV
-       
-    # Relative path to the artifacts folder
-    output_dir = "artifacts/politics"
+    # 4. Save results to a CSV file
     
-    # Create the folder if it doesn't exist
+    # Define the directory path: artifacts/politics
+    output_dir = os.path.join("artifacts", "politics")
+    
+    # Create the directory if it does not exist
     os.makedirs(output_dir, exist_ok=True)
     
-    # Define the output file path (artifacts/chatgpt_politics.csv)
+    # Define the full output file path
     output_file = os.path.join(output_dir, "chatgpt_politics.csv")
     
     # Save the dataframe
