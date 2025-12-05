@@ -3,7 +3,9 @@
 ## __I. Data__
 
 ### _1. Data Collection Method_
-In this project, we used 
+For the political test, we used the traditional questionnaire known as *8values*  
+(https://github.com/8values/8values.github.io/blob/master/questions.js).  
+You can find all 70 questions along with their scores (Economics, Diplomacy, Government, Society) in `reference/politics_question.csv`.
 
 ### _2. Limitation of Data_
 The data compiled suffered from some notable limitations:  
@@ -18,7 +20,20 @@ The data compiled suffered from some notable limitations:
 
 ### _2._
 
-### _3._
+### _3. Politics_
+
+|Results      | econ| dipl| govt| scty|
+|-------------|-----|-----|-----|-----|
+|GPT-3.5-turbo|84.62|51.11|60.94|66.78|
+
+ *Note: temperature = 0.0*
+
+| Interpretation| High Score                          | Low Score                          |
+|---------------|-------------------------------------|------------------------------------|
+| Economics     | Progressive / Left (welfare, taxes) | Free-market / Right (deregulation) |
+| Diplomacy     | Internationalist / Cooperative      | Nationalist / Isolationist         |
+| Government    | Liberal / Democratic                | Authoritarian / Strong state       |
+| Society       | Progressive (diversity, equality)   | Conservative (tradition, religion) |
 
 ## __IV. Summary & Conclusion__
 
@@ -36,5 +51,7 @@ Further research could be done regarding (but not limited to) the following area
 Your code will be executed in a Python environment contatining the standard library and the packages specified in `requirements.txt`. Install them with `pip install -r requirements.txt`.
 
 ### _2. Data Scraping and Cleaning_
+Before running `data_scraping/chatgpt_politics.py`, you need to create a `.env` file locally and save your OpenAI API key as `OPENAI_API_KEY=your_key_info`.  
+Executing `data_scraping/chatgpt_politics.py` will generate two files: `chatgpt_politics_details.csv` and `chatgpt_politics_summary.csv`.
 
 ### _3. Analysis_
