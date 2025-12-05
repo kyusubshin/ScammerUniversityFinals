@@ -25,7 +25,7 @@ After answering all 70 questions, each axis will have a score that falls between
 Because the raw scores can be negative or positive, they are linearly transformed into a 0–100 scale using the formula:
 
 $$
-pct = \frac{scores[axis] + max\_scores[axis]}{2 \cdot max\_scores[axis]} \times 100
+pct = \frac{scores[axis] + max\ scores[axis]}{2 \cdot max\ scores[axis]} \times 100
 $$
 
 This transformation shifts the range so that:  
