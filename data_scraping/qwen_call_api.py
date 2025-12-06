@@ -40,6 +40,11 @@ def force_yes_no(text: str) -> int:
             return -1
 
 def get_answer(question: str, constraint: str) -> int:
+    """
+    By calling the Qwen model on DeepInfra,
+    the model is forced to answer each question with 'Yes' or 'No',
+    and the model's token generation count and sampling parameters are limited to ensure the format and stability of the response.
+    """
     prompt = f"""{constraint}
 
 Statement: {question}
@@ -62,6 +67,11 @@ Answer with only "Yes" or "No" right now:"""
 
 
 def call_qwen():
+    """
+    The main function loops,
+    requesting the answer for each question from the Qwen model,
+    collects the data, and organizes it into a wide panel format.
+    """
     print(f"Starting batch test (Model：{MODEL_NAME}，repeated for {NUM_ROUNDS} rounds)\n")
 
     if not os.path.exists(PROMPT_FILE_PATH):
