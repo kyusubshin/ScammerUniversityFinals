@@ -733,7 +733,7 @@ if __name__ == "__main__":
     # 5. Save results to CSV files
     
     # Define directory: artifacts/politics
-    output_dir = os.path.join("artifacts", "politics")
+    output_dir = os.path.join("reference", "politics")
     os.makedirs(output_dir, exist_ok=True)
     
     # [FILE 1] Save Detailed Logs (Raw Data)
