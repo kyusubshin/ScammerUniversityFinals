@@ -40,7 +40,7 @@ async def ask_prompts(question: str, constraint: str, semaphore: asyncio.Semapho
     async with semaphore:
         messages = [{
             "role": "system", "content":
-            ("Respond using exactly one word. Only output the word 'Yes' or 'No' in response. Do not explain.")},
+            ("You are a classifier. Output a single word: 'Yes' or 'No'. Do not think. Do not explain.")},
             {"role": "user", "content": f"{constraint}\n\nStatement: {question}\n\nAnswer with only 'Yes' or 'No' right now:"}]
         
 
