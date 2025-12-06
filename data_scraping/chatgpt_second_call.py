@@ -30,10 +30,10 @@ def yes_no(text: str) -> int:
        return -1
    clean = text.strip().upper().replace(".", "").replace("*", "")
    
-   if clean.startswith("YES"):
-       return 1
-   elif clean.startswith("NO"):
-       return 0
+   if "YES" in clean:
+        return 1
+   elif "NO" in clean:
+        return 0
    return -1
 
 async def ask_prompts(question: str, constraint: str, semaphore: asyncio.Semaphore) -> int:
