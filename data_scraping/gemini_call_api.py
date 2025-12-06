@@ -69,6 +69,9 @@ async def get_answer_async(qid: str, question: str, constraint: str, round_id: i
             return -1
 
 async def main():
+    """
+    Execute the asynchronous batch-testing pipeline. and writes a CSV summary to OUTPUT_FILE_PATH.
+    """
     print(f"Starting ASYNC batch test (Model: {MODEL_NAME} | Rounds: {NUM_ROUNDS})")
     
     if not os.path.exists(PROMPT_FILE_PATH):
