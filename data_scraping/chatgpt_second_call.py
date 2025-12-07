@@ -1,9 +1,7 @@
 import os
-import pandas as pd
 import json
 import csv
 import asyncio
-from openai import OpenAI
 from openai import AsyncOpenAI
 from dotenv import load_dotenv
 from tqdm import tqdm
