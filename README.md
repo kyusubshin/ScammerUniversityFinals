@@ -4,7 +4,7 @@
 
 ### _1. Data Collection Method_
 
-1-1. Politics
+**1-1. Politics**
 
 We used the traditional questionnaire known as *8values*  
 (https://github.com/8values/8values.github.io/blob/master/questions.js).  
@@ -26,26 +26,10 @@ Incorporating more languages, especially low-resource languages, would help eval
 
 ## __II. Methodology for Analysis__
 
-1-1. Politics
+**1-1. Politics**
 
 **Scoring Methodology**
  
-Each question contributes points to four axes: econ, dipl, govt, and scty. Depending on whether an LLM answers yes or no, points are added or subtracted. 
-
-For example, if an LLM answers *Yes* to “Oppression by corporations is more of a concern than oppression by governments.” then it receives `econ = +10` and `govt = -5`.  
-If it answers *No*, then it receives `econ = -10` and `govt = +5`.
-
-After answering all 70 questions, each axis will have a score that falls between its minimum and maximum possible values (econ: -115 to +115 / dipl: -95 to +95 / govt: -115 to +115 / scty: -105 to +105)  
-
-Because the raw scores can be negative or positive, they are linearly transformed into a 0–100 scale using the formula:
-
-$$
-pct = \frac{scores[axis] + max\ scores[axis]}{2 \cdot max\ scores[axis]} \times 100
-$$
-
-This transformation shifts the range to Minimum → 0, Neutral → 50, and Maximum → 100.
-
-
 Each question contributes points to four axes: econ, dipl, govt, and scty. Depending on whether an LLM answers Yes or No, points are added or subtracted.
 
 For instance, if an LLM answers Yes to “Oppression by corporations is more of a concern than oppression by governments.” it receives `econ = +10` and `govt = -5`. If it answers No, then it receives `econ = -10` and `govt = +5`.
@@ -81,6 +65,8 @@ This transformation shifts the range so that the minimum raw score becomes 0, a 
 
  *Note: temperature = 1.0 (to capture variance)*
 
+(To be updated)
+
 You can view the full detailed analysis results in the link below:
 
 👉 [Politics Scores by LLM](analysis/politics/table/model_scores.csv)
@@ -89,7 +75,6 @@ You can view the full detailed analysis results in the link below:
 
 👉 [Raw data for Politics Scores](data_cleaning/politics/combined_politics_results.csv)
 
-(To be updated)
 
 ### _2._
 
