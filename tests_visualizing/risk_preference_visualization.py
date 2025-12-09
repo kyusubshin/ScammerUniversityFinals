@@ -43,10 +43,36 @@ pivot = df.pivot_table(
 
 os.makedirs("visualization", exist_ok=True)
 
+# Heatmap Visualization
 plt.figure(figsize=(10, 6))
-sns.heatmap(pivot, annot=True, cmap="viridis", fmt=".3f")
-plt.title("Risk Preferences by Model & Language")
+sns.heatmap(
+    pivot,
+    annot=True,
+    cmap="viridis",
+    fmt=".3f"
+)
+plt.title("Heatmap: Risk Preferences by Model & Language")
+plt.tight_layout()
 plt.savefig("visualization/risk_preference_heatmap.png", dpi=300)
 plt.close()
 
-print("Visualization saved to visualization/risk_preference_heatmap.png")
+print("Saved: visualization/risk_preference_heatmap.png")
+
+# Bar Chart Visualization
+plt.figure(figsize=(12, 6))
+
+pivot.plot(kind="bar", figsize=(12, 6))
+
+plt.title("Risk Preference Across Models and Languages")
+plt.xlabel("Model")
+plt.ylabel("Average Risk Preference Score")
+plt.legend(title="Prompt Language")
+
+plt.tight_layout()
+plt.savefig("visualization/risk_preference_by_model_language.png", dpi=300)
+plt.close()
+
+print("Saved: visualization/risk_preference_by_model_language.png")
+
+
+print("All visualizations generated successfully!")
