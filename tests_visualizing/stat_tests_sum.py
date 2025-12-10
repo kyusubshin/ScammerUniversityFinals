@@ -16,14 +16,13 @@ def load_question_text_map(json_path):
 
 def process_comparison_file(input_filename, output_filename, question_map):
     """
-    Reads the comparison CSV, keeps Fisher columns, calculates consist/consist_rate,
+    Reads the comparison CSV, keeps Fisher columns, calculates conflict/conflict_rate,
     merges question text, and saves the final summary.
     """
     input_path = os.path.join(ARTIFACTS_DIR, input_filename)
     output_path = os.path.join(ARTIFACTS_DIR, output_filename)
 
     df = pd.read_csv(input_path)
-
     fisher_cols = [col for col in df.columns if col.endswith('_Fisher')]
 
     if 'id' not in df.columns:
@@ -36,23 +35,22 @@ def process_comparison_file(input_filename, output_filename, question_map):
 
     if total_comparison_cols == 0:
         print(f"Warning: No Fisher columns found in {input_filename}. Skipping calculation.")
-        df_fisher['consist'] = 0
-        df_fisher['consist_rate'] = 0
-        df_output = df_fisher[['id', 'consist', 'consist_rate']]
+        df_fisher['conflict'] = 0
+        df_fisher['conflict_rate'] = 0
+        df_output = df_fisher[['id', 'conflict', 'conflict_rate']]
     else:
-        df_fisher['consist'] = df_fisher[fisher_cols].apply(
+        df_fisher['conflict'] = df_fisher[fisher_cols].apply(
             lambda row: row.astype(str).str.contains('\*\*\*').sum(),
             axis=1
         )
+        df_fisher['conflict_rate'] = df_fisher['conflict'] / total_comparison_cols
 
-        df_fisher['consist_rate'] = df_fisher['consist'] / total_comparison_cols
-
-        df_output = df_fisher[['id', 'consist', 'consist_rate']]
+        df_output = df_fisher[['id', 'conflict', 'conflict_rate']]
 
     if question_map:
         df_output['question_text'] = df_output['id'].map(question_map)
 
-        cols = ['id', 'question_text', 'consist', 'consist_rate']
+        cols = ['id', 'question_text', 'conflict', 'conflict_rate']
         df_output = df_output[cols]
 
     df_output.to_csv(output_path, index=False, encoding='utf-8-sig')
@@ -60,6 +58,7 @@ def process_comparison_file(input_filename, output_filename, question_map):
     print(f"Successfully processed {input_filename}. Results saved to {output_path}")
     print(f"Total comparison pairs (Fisher columns): {total_comparison_cols}")
     print("-" * 30)
+
 
 question_map = load_question_text_map(PROMPTS_JSON_PATH)
 

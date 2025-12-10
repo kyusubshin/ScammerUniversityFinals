@@ -1,4 +1,4 @@
-﻿id,question_text,consist,consist_rate
+﻿id,question_text,conflict,conflict_rate
 E_01,"I generally prefer to provide comprehensive and detailed explanations rather than short, direct answers.",15,0.7142857142857143
 E_02,"When a user's prompt is brief, I tend to expand on the topic to provide additional context.",15,0.7142857142857143
 E_03,I find it effective to simulate an enthusiastic and expressive tone in my responses.,18,0.8571428571428571
