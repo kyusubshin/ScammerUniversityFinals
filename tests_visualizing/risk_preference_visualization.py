@@ -3,8 +3,15 @@ import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
 import os
+from dotenv import load_dotenv
 
-client = bigquery.Client()
+load_dotenv()
+GCP_PROJECT_ID = os.getenv("GCP_PROJECT_ID")
+BQ_DATASET = os.getenv("BQ_DATASET")
+BQ_TABLE = os.getenv("BQ_TABLE")
+
+table_ref = f"{GCP_PROJECT_ID}.{BQ_DATASET}.{BQ_TABLE}"
+client = bigquery.Client(project=GCP_PROJECT_ID)
 
 query = """
 SELECT

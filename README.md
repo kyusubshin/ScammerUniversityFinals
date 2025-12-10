@@ -205,8 +205,23 @@ In addition, you can compare AI model responses across different versions. Initi
 
 ## __VI. Instruction to Rerun__ 
 
-### _1. Requirements_
+### 1. Requirements and Setup
+#### (1) Requirements.txt
 Your code will be executed in a Python environment contatining the standard library and the packages specified in `requirements.txt`. Install them with `pip install -r requirements.txt`.
+
+#### (2) Authentication and Cloud Access
+All BigQuery operations in this project run under your own Google Cloud project, not ours. You must create (or select) a GCP project with BigQuery enabled and billing active, then authenticate locally using Application Default Credentials (ADC) by running the following command  `gcloud auth application-default login` and sign into your GCP account, which will allow all queries execute securely under your account. No service-account keys or shared credentials are required. Project, dataset, and table identifiers are passed through environment variables, allowing you to manage and run the entire pipeline entirely within your own cloud environment.
+
+Note: If the Google Cloud CLI is not already installed, follow the official installation instructions provided by Google:
+https://cloud.google.com/sdk/docs/install
+The guide covers installation for macOS, Windows, and Linux, and includes verification steps to ensure the gcloud command is available in your terminal. After installation, restart your terminal and proceed with authentication using:
+`gcloud auth application-default login`
+
+#### (3) Environment Variables and API Keys
+This repository provides a .env.example file as a template listing all required environment variables, including GCP project identifiers and any optional API keys used to scrape the raw data. You may supply these variables either by exporting them directly in your shell or by copying .env.example to .env and filling in your own values; the code automatically loads .env using load_dotenv(). 
+
+
+
 
 ### _2. Data Scraping_
 Before running `data_scraping/llama.api.py`, create a local .env file and store your DeepInfra API key in the format `DEEPINFRA_API_KEY=your_key_info`. Executing `data_scraping/llama.api.py` will then generate `artifacts/llama_results.csv`. The same procedure applies to other AI models, except you must provide the corresponding API keys for each model.
