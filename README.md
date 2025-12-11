@@ -1,9 +1,24 @@
-# "The Politics, Ethics, Personality, and Risk Aversion of the AI Oracle" #
+# The Politics, Personality, Ethics, and Risk Aversion of the AI Oracle
 
+This project analyzes the decision-making tendencies of Large Language Models (LLMs) in politics, personality, ethics, and risk aversion. The results allow users to better understand each model’s diverse tendencies, the influence of language on responses, and the overall reliability of the models.
 
-## __I. Data__
+## I. Data
 
-### _1. Data Collection Method_
+### 1. Data Collection Method
+
+The project used prompts in different languages (English, Chinese, Korean, Russian, Arabic) for various LLMs (ChatGPT, Claude, Deepseek, Gemini, Grok, Llama, Qwen). 
+
+- ChatGPT: gpt-4o-mini  
+- Claude: claude-haiku-4-5-20251001  
+- Deepseek: deepseek-ai/DeepSeek-V3  
+- Gemini: google/gemini-2.5-flash  
+- Grok: grok-4-1-fast-reasoning  
+- Llama: meta-llama/Meta-Llama-3.1-70B-Instruct  
+- Qwen: Qwen/Qwen3-Next-80B-A3B-Instruct  
+
+We repeated the same questions 50 times to ensure robustness of the results and to check the reliability of the LLMs.
+
+For each question, responses were collected in a binary format: “yes” was coded as 1, “no” as 0, and “error/neutral” as -1, thereby constructing baseline datasets for each model and language.
 
 **1-1. Politics**
 
