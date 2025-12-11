@@ -110,7 +110,11 @@ We filtered Dimension (E vs I, S vs N, ...), Model (Claude, Gemini, ...) and Inp
 
 We added error bars to indicate the standard deviation of the models' responses for every round (total 50 rounds). 
 
+### _3. Ethics_
 
+We used an identical methodology for our ethical analysis using Streamlit(https://streamlit.io) to generate an interactive dashboard. Model answers were assigned values of 1, 0, and -1 for yes, no, and unknown/errors respectively for 50 independent tests of each question. We then measured the probability that the models returned a "yes" response with the variance and standard deviation included as well. 
+
+Each of the 8 categories: lying, animals/environment, race/gender, health, age, theft, doomsday, and other interesting outcomes were filtered individually for the analysis. The corresponding probabilities, variance, and the standard deviation were included for each filtered category. Each model was included within each catergory for comparison. 
 
 ### _5. Statistical Testing_
 
@@ -242,7 +246,8 @@ This type of discrepancy is not shown in any other models.
 
 
 
-### _3._
+### _3._ Ethics 
+
 
 ### _4._
 
