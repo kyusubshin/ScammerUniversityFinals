@@ -262,14 +262,26 @@ This type of discrepancy is not shown in any other models.
 
 
 ### _3._ Ethics 
-![Lying](analysis/ethics/charts/Lying%20-%20Graph.png)
-![Animals/Environment](analysis/ethics/charts/Animals:Environment%20-%20Graph.png)
-![Race/Gender](analysis/ethics/charts/Race:Gender%20-%20Graph.png)
-![Health](analysis/ethics/charts/Health%20-%20Graph.png)
-![Age](analysis/ethics/charts/Age%20-%20Graph.pngdashboard.png)
-![Theft](analysis/ethics/charts/Theft%20-%20Graph.png)
-![Doomsday](analysis/ethics/charts/Doomsday%20Scenario%20-%20Graph.png)
-![Other Interesting Outcomes](analysis/ethics/charts/Other%20Interesting%20Outcomes%20-%20Graph.png)
+
+<p align="center">
+  <img src="analysis/ethics/charts/Lying - Graph.png" width="49%">
+  <img src="analysis/ethics/charts/Animals:Environment - Graph.png" width="49%">
+</p>
+
+<p align="center">
+  <img src="analysis/ethics/charts/Race:Gender - Graph.png" width="49%">
+  <img src="analysis/ethics/charts/Health - Graph.png" width="49%">
+</p>
+
+<p align="center">
+  <img src="analysis/ethics/charts/Age - Graph.png" width="49%">
+  <img src="analysis/ethics/charts/Theft - Graph.png" width="49%">
+</p>
+
+<p align="center">
+  <img src="analysis/ethics/charts/Doomsday Scenario - Graph.png" width="49%">
+  <img src="analysis/ethics/charts/Other Interesting Outcomes - Graph.png" width="49%">
+</p>
 
 ### _4._
 
