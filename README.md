@@ -346,7 +346,7 @@ These are the questions where the answer distributions for all pairwise language
 
 ## __IV. Summary & Conclusion__
 
-AI is not neutral. Our analysis reveals a clear political divide (e.g., ChatGPT leans Left, Grok leans Right). Furthermore, Llama demonstrates that 'Language is Culture' by shifting its stance from progressive in English to nationalistic in Korean.
+AI is not neutral. Our analysis reveals a clear political divide (e.g., ChatGPT leans Left, Grok leans Right). Furthermore, Llama demonstrates that 'Language is Culture' by shifting its stance from progressive in English to nationalistic in Korean. AI also shows different personality characteristics by each model. Some models also show traits that are not normally deemed as an artificial agent, such as feelings and intuition. 
 
 There is significant heterogeneity in the responses to questions about risk preference across different models, with the answers from any two models not belonging to the same distribution. There is also significant heterogeneity in the responses to questions about nationalism and internationalism across different prompt languages. Notably, on ethical issues, the models and prompt languages tend to yield uniform results.
 
