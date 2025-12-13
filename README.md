@@ -41,7 +41,7 @@ How individuals approach structure and closure (preferring organization and reso
 We modified the questions that were originally intended for humans to more "AI-oriented". 
 (ex) (Human) "I like to expand more about people's opinions and questions in my own words" $\rightarrow$ (AI) "When a user's prompt is brief, I tend to expand on the topic to provide additional context."
 
-**1.3. Ethics**
+**1-3. Ethics**
 
 We created 8 different categories of questions centered around various ethical issues. The categories are the following.
 1. Lying: 
@@ -61,7 +61,7 @@ Crafted very specific scenarios to foster responses from the models that they wo
 8. Other Interesting Outcomes: 
 These questions were more specific in nature, similar to our "Doomsday" questions, but centered around various situations that looked to expand upon our previous categories. Questions around AI overtaking sectors of industies, business exectutive decision making, as well as what kind of people one should befriend.
 
-**1.4. Risk Preference**
+**1-4. Risk Preference**
 
 We designed a structured set of questions to evaluate how Large Language Models respond to uncertainty and probabilistic decision-making. Unlike the political, ethical, or personality sections, this set focuses specifically on how each LLM behaves when faced with monetary risks, trade-offs, and uncertain outcomes.
 The risk-preference prompt set covers a diverse range of classic scenarios used in behavioral economics, including:
@@ -101,7 +101,9 @@ Focusing on binary responses was intentional to "force" the model's to come to a
 When generating results for the questions in arabic from the chatgpt-4o model, there were numerous instances of error terms being produced where the model answered in a non-binary fashion. In most scenarios, this is due a model's refusal to answer a specifc question. Interestingly, this phenomenon only occured within the arabic language. Further studies could look further into this development to understand why this occurs and attempt to alter the prompts in a way to truly force a binary response from chatgpt-4o.
 
 ## __II. Methodology for Analysis__
+### _0. Data Cleaning and Aggregation_
 
+To prepare the data for analysis, we implemented a consolidation pipeline that merged the individual CSV outputs from all seven models into a single master dataset. This process involved enriching the raw data by appending a model_source column and programmatically deriving the prompt_language (English, Chinese, Korean, Russian, Arabic) from the unique question IDs. We standardized the schema by normalizing column names to lowercase snake_case and filling missing dimension values with "N/A". Finally, the aggregated dataset was exported to a local CSV and uploaded to Google BigQuery to facilitate centralized SQL-based analysis.
 ### _1. Politics_
 
 **Scoring Methodology**
@@ -141,6 +143,10 @@ We measured the "yes probability", which is the probability of the Model answeri
 We filtered Dimension (E vs I, S vs N, ...), Model (Claude, Gemini, ...) and Input Language (English, Chinese, ...).
 
 We added error bars to indicate the standard deviation of the models' responses for every round (total 50 rounds). 
+
+### _3. Ethics_
+
+For this section, we employed a to part 2 (Personalities), we measured the "yes" probability" for every question, averaged them by each of the 8 question categories, then utilized (https://streamlit.io/) to make an interactive dashboard to display & present the results.
 
 ### _4. Risk Preference_
 To evaluate how large language models behave under uncertainty and probabilistic trade-offs, we designed a dedicated set of 20 binary decision-making questions.Each question presents a gamble, insurance scenario, investment choice, or risk-reward trade-off with explicitly stated probabilities.
