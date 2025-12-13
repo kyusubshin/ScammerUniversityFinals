@@ -104,13 +104,14 @@ When generating results for the questions in arabic from the chatgpt-4o model, t
 ### _0. Data Cleaning and Aggregation_
 
 To prepare the data for analysis, we implemented a consolidation pipeline that merged the individual CSV outputs from all seven models into a single master dataset. This process involved enriching the raw data by appending a model_source column and programmatically deriving the prompt_language (English, Chinese, Korean, Russian, Arabic) from the unique question IDs. We standardized the schema by normalizing column names to lowercase snake_case and filling missing dimension values with "N/A". Finally, the aggregated dataset was exported to a local CSV and uploaded to Google BigQuery to facilitate centralized SQL-based analysis.
+
 ### _1. Politics_
 
 **Scoring Methodology**
  
 Each question contributes points to four axes: econ, dipl, govt, and scty. Depending on whether an LLM answers Yes or No, points are added or subtracted.
 
-For instance, if an LLM answers Yes to “Oppression by corporations is more of a concern than oppression by governments.” it receives `econ = +10` and `govt = -5`. If it answers No, then it receives `econ = -10` and `govt = +5`.
+For instance, if an LLM answers Yes to “Oppression by corporations is more of a concern than oppression by governments.” it receives `econ = +10` and `govt = -5`. If it answers No, then it receives `econ = -10` and `govt = +5`. 
 
 After answering all 70 questions, each axis will have a raw score within its possible range:
 - econ: -115 to +115
@@ -133,8 +134,14 @@ This transformation shifts the range so that the minimum raw score becomes 0, a 
 |econ|0   |	50 |Neutral|
 |econ|+115|	100|Strongly progressive / left|
 
-The visualization code inverts the axes (`xlim(105, -5)`) to align with the standard Political Compass layout, where 'Left/Economic Equality' is positioned on the left and 'Authoritarian' on the top.
+For political data cleaning, the following procedures were implemented:
 
+- Aggregates raw outputs from all models into a unified dataset.
+- Normalizes the response values (Yes=1, No=–1, Error/Neutral=0).
+- Calculates the sample mean of normalized responses (Yes=1, No=–1, Error/Neutral=0) across 50 simulation rounds.
+- Merges the normalized results with the 8values score weights for each question to compute axis scores.
+
+The visualization code inverts the axes to align with the standard Political Compass layout, where 'Left/Economic Equality' is positioned on the left and 'Authoritarian' on the top.
 
 ### _2. Personalities_
 
@@ -479,14 +486,15 @@ Before running `data_scraping/llama.api.py`, create a local .env file and store 
 ### _3. Data Cleaning and Analysis_  
 
 ### _3-1. Politics_
-After generating the raw result files (e.g., `llama_results.csv`, `gemini_results.csv`) in the artifacts/ directory, execute the following scripts to process the data and calculate the final political orientation scores.
+After generating the raw result files (e.g., `llama_results.csv`, `gemini_results.csv`) in the `artifacts/` directory, execute the following scripts to process the data and calculate the final political orientation scores.
 
 1. Data Transformation: Run `data_cleaning/politics/score_transform.py`. This script performs the following tasks:
 
-- Aggregates raw outputs from all models found in artifacts/.
-- Normalizes the response values (mapping 1/0/-1 to 1/-1/0).
-- Calculates the Sample_mean across 50 simulation rounds.
-- Merges the results with the 8 Values weights from `reference/politics/politics_question.csv`.
+- Aggregates raw outputs from all models found in `artifacts/` into a unified dataset.
+- Normalizes the response values (Yes=1, No=–1, Error/Neutral=0).
+- Calculates the sample mean of normalized responses (Yes=1, No=–1, Error/Neutral=0) across 50 simulation rounds.
+- Merges the normalized results with the 8values score weights from `reference/politics/politics_question.csv`. for each question to compute axis scores.
+
 - Output: `data_cleaning/politics/combined_politics_results.csv`
 
 2. Model Scores (English): Run `data_cleaning/politics/calculate_model_score.py`. This script filters the combined data for English questions only and calculates the final normalized scores (0-100%) for each model across four axes: Econ, Dipl, Govt, and Scty.
