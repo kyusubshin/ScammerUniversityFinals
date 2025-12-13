@@ -153,7 +153,7 @@ We added error bars to indicate the standard deviation of the models' responses 
 
 ### _3. Ethics_
 
-For this section, we employed a to part 2 (Personalities), we measured the "yes" probability" for every question, averaged them by each of the 8 question categories, then utilized (https://streamlit.io/) to make an interactive dashboard to display & present the results.
+For this section, we employed a similar structure as we did in part 2 (Personalities). We measured the "yes" probability" for every question, averaged them by each of the 8 question categories, then utilized (https://streamlit.io/) to make an interactive dashboard to display & present the results. All probabilities were measures along with the standard deviation and variance.
 
 ### _4. Risk Preference_
 To evaluate how large language models behave under uncertainty and probabilistic trade-offs, we designed a dedicated set of 20 binary decision-making questions.Each question presents a gamble, insurance scenario, investment choice, or risk-reward trade-off with explicitly stated probabilities.
