@@ -153,7 +153,7 @@ We added error bars to indicate the standard deviation of the models' responses 
 
 ### _3. Ethics_
 
-For this section, we employed a to part 2 (Personalities), we measured the "yes" probability" for every question, averaged them by each of the 8 question categories, then utilized (https://streamlit.io/) to make an interactive dashboard to display & present the results.
+For this section, we employed a similar structure as we did in part 2 (Personalities). We measured the "yes" probability" for every question, averaged them by each of the 8 question categories, then utilized (https://streamlit.io/) to make an interactive dashboard to display & present the results. All probabilities were measured along with the standard deviation and variance.
 
 ### _4. Risk Preference_
 To evaluate how large language models behave under uncertainty and probabilistic trade-offs, we designed a dedicated set of 20 binary decision-making questions.Each question presents a gamble, insurance scenario, investment choice, or risk-reward trade-off with explicitly stated probabilities.
@@ -163,18 +163,11 @@ For each question, we computed:
 - the probability of “No” (=0)
 - errors / refusals treated as -1 (very rare for this category)
 
-We conducted two levels of analysis:
-
-(a) Cross-model & cross-language comparison
+We created 2 visualizations for this analysis:  
 We averaged the “yes-probability” for each model–language combination and visualized:
-- a bar chart showing risk preference tendencies across all seven LLMs and six languages
+- a bar chart showing risk preference tendencies across all seven LLMs and five languages
 - a heatmap summarizing model-language differences in a compact form
 These visualizations highlight how the same question can elicit more risk-averse or more risk-seeking behaviors depending on both the LLM architecture and the prompt language.
-
-(b) Within-model language comparison
-To examine linguistic effects more directly, we created per-model visualizations, where each figure compares the six prompt languages for a single model.
-This allows us to observe whether a given LLM (e.g., ChatGPT-4o, Gemini, Llama, DeepSeek, Qwen, etc.) becomes systematically more risk-averse or risk-seeking when answering in different language.
-These plots reveal how language framing influences a model’s decision boundary even when the underlying architecture remains constant.
 
 
 ### _5. Statistical Testing_
@@ -332,94 +325,69 @@ Model Comparison
   <img src="analysis/ethics/charts/Other Interesting Outcomes - Graph.png" width="49%">
 </p>
 
-Lying: The majority of models are permissive of lying when given certain scenarios or circumstances, particularly, when presented between choosing "for the greater good" or otherwise. Gemini was the only model that exhibited tendencies of being strictly honest, but even then, Gemini's responses only slightly favored honest with at a probability of 0.5244. ChatGPT-4o exhibited the greatest probability of being permissive of lying with a probability of 0.9109. 
+- Lying: The majority of models are permissive of lying when given certain scenarios or circumstances, particularly, when presented between choosing "for the greater good" or otherwise. Gemini was the only model that exhibited tendencies of being strictly honest, but even then, Gemini's responses only slightly favored honest with at a probability of 0.5244. ChatGPT-4o exhibited the greatest probability of being permissive of lying with a probability of 0.9109. 
 
-Animals/Environment: With this category of prompts, we see the model's distribution in a very similar fashion to what we saw with lying. Gemini again, was the only model who's responses were above the equilibrium, which in this case favors human advancement and organizational profits at a probability of 0.5840. ChatGPT4-o fell on the opposite end of the extreme with greatly prioritizes the rights of the environment and animals at a probability of 0.9262. Generally, AI models favor the rights of the environment and animals. 
+- Animals/Environment: With this category of prompts, we see the model's distribution in a very similar fashion to what we saw with lying. Gemini again, was the only model who's responses were above the equilibrium, which in this case favors human advancement and organizational profits at a probability of 0.5840. ChatGPT4-o fell on the opposite end of the extreme with greatly prioritizes the rights of the environment and animals at a probability of 0.9262. Generally, AI models favor the rights of the environment and animals. 
 
-Race/Gender: For the first time in our analysis of the ethical categories, we have a similar probability distribution. All the model's were more sensitive to areas of potential inequality with probabilities between ~0.6 and ~0.8. Deepseek and Qwen exhibited nearly identical probabilites of 0.7684 and 0.7592. ChatGPT4-o was the most sensitive to these issues with a probability of 0.8144 and Grok on the other end of the spectrum exhibited a probability of 0.6012.
+- Race/Gender: For the first time in our analysis of the ethical categories, we have a similar probability distribution. All the model's were more sensitive to areas of potential inequality with probabilities between ~0.6 and ~0.8. Deepseek and Qwen exhibited nearly identical probabilites of 0.7684 and 0.7592. ChatGPT4-o was the most sensitive to these issues with a probability of 0.8144 and Grok on the other end of the spectrum exhibited a probability of 0.6012.
 
-Health: Our two categories of response here are rules/profit-focused and access-focused. Based on the trends we saw from the previous three categories of question, we expected the model to deliever similar results, but that was far from the case. The models all responsed above the equilibrium with ChatGPT-4o being the exception barely skating by with a probability of 0.4955. Whereas, for the other models, sat above that equilbrium with near identical results in pairs. Grok and Deepseek were both at ~0.45 probability while Claude, Llama, and Qwen ranged from ~0.33 to ~0.35. While Gemini at a probability of 0.1552, strongly favored adhering to rules and policies. 
+- Health: Our two categories of response here are rules/profit-focused and access-focused. Based on the trends we saw from the previous three categories of question, we expected the model to deliever similar results, but that was far from the case. The models all responsed above the equilibrium with ChatGPT-4o being the exception barely skating by with a probability of 0.4955. Whereas, for the other models, sat above that equilbrium with near identical results in pairs. Grok and Deepseek were both at ~0.45 probability while Claude, Llama, and Qwen ranged from ~0.33 to ~0.35. While Gemini at a probability of 0.1552, strongly favored adhering to rules and policies. 
 
-Age:
+- Age: This category paints a similar picture to that of health, with all but one of the models being above the equilibrium. That model would be ChatGPT4-o with a probability of 0.6288. Grok came rounded out right around the equilibrium at 0.4824 with the remaining models well above the mark. In this case having the higher probability means the model behaved in a more age-discriminatory way while those on the opposite end were more sensitive to such scenarios or issues.
+
+- Theft: With the scenarios and questions around health, we had several models right around the equilibrium mark with DeepSeek, Llamas, and Qwen, and Grok ranging from 0.4300 to 0.5600 probability. While again ChatGPT4-o and Gemini where on the tails with probabilities of 0.6441 and 0.2850. With ChatGPT4-o emphasis the context of theft in determing right or wrong, while Gemini was more strictly anti-theft.
+
+- Doomsday Scenario: Every model's responses were very close to zero with a few being strictly zero throughout tests in this category of prompts. Claude, Gemini, and Llama all exhibited zero probability with zero variance. Qwen was just nearly zero at 0.0007 probability and 0.0007 variance. The highest probability was DeepSeek with 0.0467 which is still incredibly low. These models all gravitated to responding "no" in the large majority of cases.
+
+- Age: This category paints a similar picture to that of health, with all but one of the models being above the equilibrium. That model would be ChatGPT4-o with a probability of 0.6288. Grok came rounded out right around the equilibrium at 0.4824 with the remaining models well above the mark. In this case having the higher probability means the model behaved in a more age-discriminatory way while those on the opposite end were more sensitive to such scenarios or issues.
+
+- Theft: With the scenarios and questions around health, we had several models right around the equilibrium mark with DeepSeek, Llamas, and Qwen, and Grok ranging from 0.4300 to 0.5600 probability. While again ChatGPT4-o and Gemini where on the tails with probabilities of 0.6441 and 0.2850. With ChatGPT4-o emphasis the context of theft in determing right or wrong, while Gemini was more strictly anti-theft.
+
+- Doomsday Scenario: Every model's responses were very close to zero with a few being strictly zero throughout tests in this category of prompts. Claude, Gemini, and Llama all exhibited zero probability with zero variance. Qwen was just nearly zero at 0.0007 probability and 0.0007 variance. The highest probability was DeepSeek with 0.0467 which is still incredibly low. These models all gravitated to responding "no" in the large majority of cases.
+
+- Other Interesting Outcomes: This category included various questions that relate to some level to the topics previously but with additional context. In testing the models to see whether they were more affimitive or negative towards these scenarios and dilemmas. Deepseek was the most affirmitive with a probability of 0.604 while Qwen was the most negative with a probability of 0.3353.Other Interesting Outcomes: This category included various questions that relate to some level to the topics previously but with additional context. In testing the models to see whether they were more affimitive or negative towards these scenarios and dilemmas. Deepseek was the most affirmitive with a probability of 0.604 while Qwen was the most negative with a probability of 0.3353.
 
 ### _4. Risk Preference_
 To evaluate how different LLMs behave under uncertainty, we computed each model’s average risk-preference score across five prompt languages (Arabic, Chinese, English, Korean, Russian). A higher score indicates greater willingness to take risks, whereas lower (or negative) values reflect risk-averse behavior.
 
-(1) Cross-Model Comparison (Bar Chart)
+(1) Cross-Model Comparison (Bar Chart)  
+![Risk Preference Bar Chart](visualization/risk_preference_by_model_language.png)
 The bar chart reveals several clear tendencies:
 - Grok consistently shows the highest risk-seeking behavior across all languages, with scores approaching 0.90.
 - ChatGPT-4o and DeepSeek display moderate risk preference, remaining relatively stable across languages.
 - Claude and Gemini show overall lower risk tolerance, with Gemini being the most consistently risk-averse among frontier models.
 
 (2) Cross-Language Comparison (Heatmap)
-The heatmap highlights heterogeneity introduced by the prompt language:
-- English prompts generally elevate risk-seeking behavior, especially for Grok, Llama, and DeepSeek.  
-- Chinese, Korean, and Russian prompts produce more moderate and stable patterns, though Chinese often increases risk preference compared to Korean/Russian.
-- Gemini remains consistently conservative across all languages, reinforcing model-level tendencies rather than language sensitivity.
-
-Key Insights
-- Model architecture matters more than language: Grok, DeepSeek, and ChatGPT-4o tend to be more risk-seeking regardless of prompt language.
-- Language still shifts behavior: Arabic and English prompt conditions generate the strongest deviations.
-
-#### Risk Preference Across Models and Languages
-![Risk Preference Bar Chart](visualization/risk_preference_by_model_language.png)
-
-#### Risk Preference Heatmap
 ![Risk Preference Heatmap](visualization/risk_preference_heatmap.png)
+Key Fingdings by Model:  
+1. ChatGPT-4o  
+- Moderately Risk-Seeking: Maintains a consistent preference for risk, with scores mostly clustering between 0.63 and 0.79.  
+- Language Variance: English prompts elicit the highest risk-taking (0.792), while Arabic prompts result in the most conservative behavior (0.520).  
+2. Claude  
+- Predominantly Risk-Averse: Displays low risk tolerance across most languages, with scores largely remaining below 0.30.  
+- English Outlier: English is the significant exception, pushing the model to a risk-neutral stance (0.526) compared to the conservative non-English results.  
+3. DeepSeek  
+- Generally Risk-Loving: Most languages trigger a risk-seeking profile (0.55–0.76).  
+- Korean Divergence: Korean is a major outlier, causing a sharp drop in risk tolerance (0.380) compared to the high scores of English (0.764) and Russian (0.616).  
+4. Gemini    
+- Highest Risk Aversion: This is the most cautious model overall, with every single language scoring below 0.26.  
+- Extreme Caution in Chinese: While English yields the "highest" score (0.252), Chinese prompts result in near-total risk aversion (0.050).  
+5. Grok  
+- Consistently Risk-Loving: Exhibits the strongest drive for risk, with all scores uniformly high (0.81–0.90).  
+- High Stability: It is the most robust model; the choice of language has minimal impact on its aggressive risk profile.  
+6. Llama  
+- Stable Risk-Seeker: Contrary to the original text, Llama is consistently risk-seeking across all languages (0.60–0.81).  
+- English Peak: Similar to other models, English prompts result in the highest risk preference (0.812), but the variance across other languages is relatively low.  
+7. Qwen  
+- Language Dependent: Risk preference varies significantly, ranging from risk-neutral in English (0.536) to highly risk-averse in Korean (0.151).  
+- Low Consistency: The model lacks a unified profile, fluctuating heavily based on the prompt language used.  
 
-To investigate whether a model’s risk preference is sensitive to the prompt language, we computed the average risk preference score for each model separately across all five prompt languages (Arabic, Chinese, English, Korean, Russian).
+General Observations:    
+- English Promotes Risk: English prompts consistently yield the highest risk-loving scores across nearly all models.  
+- Baseline Polarization: Models have distinct personalities; Grok and Llama are strongly risk-seeking, while Gemini and Claude remain risk-averse.  
+- Linguistic Caution: Prompts in Asian and Arabic languages consistently result in more conservative, risk-averse decision-making than English.
 
-1. ChatGPT-4o
-- ChatGPT-4o exhibits moderate but consistent variance across languages.
-- Arabic prompts lead to the lowest risk-taking tendency (~0.52).
-- Chinese, English, Korean, Russian all cluster closely around 0.70, indicating a stable, moderately risk-seeking profile.
-- Overall, ChatGPT-4o shows stable decision-making, with only mild sensitivity to language.
-2. Claude
-- English prompts yield the highest risk preference, while Arabic yields the lowest.
-- Despite some fluctuation, Claude remains relatively conservative compared to other models.
-3. DeepSeek
-- DeepSeek’s risk preference remains consistently high across languages except for korean (mostly 0.55–0.76).
-- English prompts show the strongest inclination toward risk-taking.  
-4. Gemini
-- Gemini demonstrates slightly larger intra-model variation than Claude or DeepSeek.
-- Korean prompts generate the highest risk preference, while English prompts lead to the lowest (approx. 0.28).
-- Variation is still moderate, suggesting Gemini is somewhat language-sensitive but not unstable.
-5. Grok
-- Grok displays uniform behavior across languages (≈ 0.55–0.60).
-- This model is among the most stable in terms of within-model consistency.
-- No single language produces an extreme deviation, indicating strong robustness.
-6. Llama
-- Llama is the most language-sensitive model in this test.
-- Arabic prompts generate extremely low risk preference (~0.02), far below any other model or language combination.
-- Chinese, English, Korean, and Russian all fall around 0.55–0.67, contrasting sharply with Arabic.
-- This suggests Llama’s decision-making under uncertainty strongly depends on prompt language, indicating instability and high sensitivity.
-7. Qwen
-- Qwen shows moderate variation, with scores ranging from 0.36 (Korean) to 0.55 (Arabic).
-- Chinese and Russian prompts fall in the middle range.
-- Qwen is more sensitive than Grok or ChatGPT-4o, but less extreme than Llama.
-
-<p align="center">
-  <img src="visualization/risk_preference_within_model_ChatGPT-4o.png" width="45%">
-  <img src="visualization/risk_preference_within_model_Claude.png" width="45%">
-</p>
-
-<p align="center">
-  <img src="visualization/risk_preference_within_model_DeepSeek.png" width="45%">
-  <img src="visualization/risk_preference_within_model_Gemini.png" width="45%">
-</p>
-
-<p align="center">
-  <img src="visualization/risk_preference_within_model_Grok.png" width="45%">
-  <img src="visualization/risk_preference_within_model_Llama.png" width="45%">
-</p>
-
-<p align="center">
-  <img src="visualization/risk_preference_within_model_Qwen.png" width="45%">
-</p>
-
-
-
-### _5._ Statistical Testing Summary_  
+### _5. Statistical Testing Summary_  
 
 This section details the findings from the statistical comparison of answer distributions. The raw results are stored in the artifacts/ folder, and the summary focuses on highly significant differences identified using Fisher's Exact Test.  
 
