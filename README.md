@@ -127,7 +127,7 @@ $$
 
 This transformation shifts the range so that the minimum raw score becomes 0, a neutral score becomes 50, and the maximum raw score becomes 100.
 
-< Example of Interpreataion >
+< Example of Interpreatation >
 |Axis|Raw score|Transformed score(pct)| Interpretation |
 |---|---|---|---|
 |econ|-115|	0  |Strongly free‑market / right|
